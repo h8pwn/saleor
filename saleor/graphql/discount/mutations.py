@@ -206,7 +206,7 @@ class VoucherRemoveCatalogues(VoucherBaseCatalogueMutation):
 class SaleInput(graphene.InputObjectType):
     name = graphene.String(description='Voucher name.')
     type = DiscountValueTypeEnum(description='Fixed or percentage.')
-    value = Decimal(description='Value of the voucher.')
+    value = Decimal(description='Value of the voucher.', default_value=None)
     products = graphene.List(
         graphene.ID, description='Products related to the discount.',
         name='products')
@@ -216,9 +216,9 @@ class SaleInput(graphene.InputObjectType):
     collections = graphene.List(
         graphene.ID, description='Collections related to the discount.',
         name='collections')
-    start_date = graphene.types.datetime.Date(
+    start_date = graphene.Date(
         description='Start date of the sale in ISO 8601 format.')
-    end_date = graphene.types.datetime.Date(
+    end_date = graphene.Date(
         description='End date of the sale in ISO 8601 format.')
 
 

@@ -28,7 +28,7 @@ class Decimal(graphene.Float):
             value = str(value)
             return decimal.Decimal(value)
         except decimal.DecimalException:
-            return None
+            return 0
 
 
 class WeightScalar(graphene.Scalar):
