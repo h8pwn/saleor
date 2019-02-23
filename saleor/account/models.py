@@ -123,6 +123,9 @@ class User(PermissionsMixin, AbstractBaseUser):
     default_billing_address = models.ForeignKey(
         Address, related_name='+', null=True, blank=True,
         on_delete=models.SET_NULL)
+    phone = models.CharField(
+        unique=True, null=True, blank=True,
+        validators=[validate_possible_number], max_length=13)
 
     USERNAME_FIELD = 'email'
 

@@ -86,6 +86,12 @@ class SignupForm(forms.ModelForm, FormWithReCaptcha):
             'unique': pgettext_lazy(
                 'Registration error',
                 'This email has already been registered.')})
+    phone = forms.CharField(
+        label=pgettext('Phone', 'Phone Number'),
+        error_messages={
+            'unique': pgettext_lazy(
+                'Registration error',
+                'This phone number has already been registered.')})
 
     class Meta:
         model = User

@@ -485,7 +485,7 @@ def test_create_user_after_order(order, client):
     order.user_email = 'hello@mirumee.com'
     order.save()
     url = reverse('order:checkout-success', kwargs={'token': order.token})
-    data = {'password': 'password'}
+    data = {'password': 'password', 'phone': '+111111111112'}
 
     response = client.post(url, data)
 

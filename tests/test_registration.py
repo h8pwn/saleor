@@ -91,7 +91,8 @@ def test_signup_form_user_exists(customer_user):
 
 def test_signup_view_create_user(client, db):
     url = reverse('account:signup')
-    data = {'email': 'client@example.com', 'password': 'password'}
+    data = {'email': 'client@example.com', 'password': 'password',
+            'phone': '+111111111111'}
     response = client.post(url, data)
     assert User.objects.count() == 1
     assert User.objects.filter(email='client@example.com').exists()
@@ -103,6 +104,7 @@ def test_signup_view_redirect(client, customer_user):
     url = reverse('account:signup')
     data = {
         'email': 'client@example.com', 'password': 'password',
+        'phone': '+111111111111',
         'next': reverse('checkout:index')}
     response = client.post(url, data)
     redirect_location = get_redirect_location(response)
